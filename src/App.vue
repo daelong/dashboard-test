@@ -20,10 +20,10 @@ const uniqueViewStyle = ref(
         window.localStorage.getItem("uniqueViewStyle") as string
       ) as Style)
     : {
-        top: "100px",
-        left: "250px",
-        width: "200px",
-        height: "200px",
+        top: "76px",
+        left: "362px",
+        width: "252px",
+        height: "135px",
       }
 );
 const uniqueViewTotal = ref(0);
@@ -35,10 +35,10 @@ const totalViewStyle = ref(
         window.localStorage.getItem("totalViewStyle") as string
       ) as Style)
     : {
-        top: "100px",
-        left: "550px",
-        width: "200px",
-        height: "200px",
+        top: "76px",
+        left: "780px",
+        width: "252px",
+        height: "136px",
       }
 );
 const totalViewTotal = ref(0);
@@ -50,10 +50,10 @@ const chartViewStyle = ref(
         window.localStorage.getItem("chartViewStyle") as string
       ) as Style)
     : {
-        top: "200px",
-        left: "250px",
-        width: "200px",
-        height: "200px",
+        top: "237px",
+        left: "363px",
+        width: "665px",
+        height: "313px",
       }
 );
 const chartDate = ref([]);
@@ -66,8 +66,8 @@ const referralViewStyle = ref(
         window.localStorage.getItem("referralViewStyle") as string
       ) as Style)
     : {
-        top: "500px",
-        left: "250px",
+        top: "598px",
+        left: "379px",
         width: "200px",
         height: "200px",
       }
@@ -99,6 +99,7 @@ const getData = async () => {
 
   await testStore.getTopReferralData();
   referralData.value = testStore.$state.referralData;
+  console.log(referralData.value.map((v) => v[1]));
 };
 
 const makeChart = async () => {
@@ -133,6 +134,12 @@ const makeChart = async () => {
       ],
     },
     options: {
+      plugins: {
+        legend: {
+          display: true,
+          position: "bottom",
+        },
+      },
       scales: {
         "y-left": {
           type: "linear",
@@ -306,7 +313,7 @@ onMounted(() => {
       :height="referralViewStyle.height"
       id="referralViewStyle"
     >
-      <canvas id="pieChart" width="400" height="200"></canvas>
+      <canvas id="pieChart" width="500" height="300"></canvas>
     </Widget>
   </div>
 </template>
